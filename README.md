@@ -10,6 +10,11 @@ A protected relationship is defined by :
 
 So the model has to be defined by mapping properties within a template (not a class)
 
+## Requirements
+PHP >= 8.0 (developped with PHP 8.4)
+Omeka S >= ^4.0.0 (not tested on older versions)
+
+
 ## Principle
 
 Constraints are defined in a single **referential_integrity** table
