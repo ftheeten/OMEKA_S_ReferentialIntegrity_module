@@ -1,0 +1,48 @@
+<?php
+
+    $this->headLink()->appendStylesheet($this->assetUrl("css/referential-integrity-form.css", "ReferentialIntegrity"));
+
+?>
+
+<a class="button" 
+   href="<?= $this->url('admin/referential-integrity', ['action' => 'add']) ?>">
+   Add constraint
+</a>
+
+<h2>List of constraints</h2>
+	
+	
+
+
+<table class="tablesaw">
+  <thead>
+    <tr>
+	  
+      <th>ID</th>
+      <th>Source template</th>
+      <th>Source property</th>
+	  <th>Target template</th>
+	  <th>Creator</th>
+	  <th>Modification date</th>
+	  <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($rows as $row): ?>
+    <tr>
+      <td><?= $this->escapeHtml($row['id']); ?></td>
+      <td><?= $this->escapeHtml($row['source_template_label']); ?></td>
+	  <td><?= $this->escapeHtml($row['source_property_label']); ?></td>
+	  <td><?= $this->escapeHtml($row['target_template_label']); ?></td>
+	  <td><?= $this->escapeHtml($row['username']); ?></td>
+	  <td><?= $this->escapeHtml($row['creation_date']); ?></td>
+      <td>
+        <a href="<?= $this->url('admin/referential-integrity', ['action' => 'delete', 'id' => $row['id']]) ?>"
+           class="o-icon-delete"
+           title="Delete"
+           onclick="return confirm('Delete this constraint ?');"></a>
+      </td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>

@@ -1,0 +1,82 @@
+<?php
+
+    $this->headLink()->appendStylesheet($this->assetUrl("css/referential-integrity-form.css", "ReferentialIntegrity"));
+	$this->headScript()->appendFile($this->assetUrl("js/referential-integrity-form.js", "ReferentialIntegrity"));
+?>
+
+<a class="button" 
+   href="<?= $this->url('admin/referential-integrity', ['action' => 'index']) ?>">
+   List of constraints
+</a>
+
+<h2>Liaisons entre objets</h2>
+	
+	
+<div class="field">
+    <div class="field-meta">
+        <label for="src-template-select"><?= $this->translate('Selectionner un template (<b>source</b>)') ?></label>
+    </div>
+	<div class="inputs">
+        <select id="src-template-select" class="value template-select" data-event-route="<?= $this->url('admin/referential-integrity', ['action' => 'get-properties']) ?>" data-event-property="#src-property-select">
+            <option value="-1"><?= $this->translate('-- Choisir un template --') ?></option>
+            <?php foreach ($templates as $t): ?>
+               <option value="<?= $t->id() ?>"><?= $this->escapeHtml($t->label()) ?></option>
+            <?php endforeach; ?>
+        </select>
+       
+    </div>
+
+    <div class="field-meta">
+        <label for="src-property-select"><?= $this->translate('Ajouter une propriété (<b>source</b>)') ?></label>
+    </div>
+    <div class="inputs">
+        <select id="src-property-select" class="value">
+            <option value="-1"><?= $this->translate('-- Choisir une propriété --') ?></option>
+            
+        </select>
+       
+    </div>
+	
+	   <div class="field-meta">
+        <label for="target-template-select"><?= $this->translate('Selectionner un template (<b>cible</b>)') ?></label>
+    </div>
+	<div class="inputs">
+        <select id="target-template-select" class="value template-select" data-event-route="<?= $this->url('admin/referential-integrity', ['action' => 'get-properties']) ?>">
+            <option value="-1"><?= $this->translate('-- Choisir un template --') ?></option>
+            <?php foreach ($templates as $t): ?>
+               <option value="<?= $t->id() ?>"><?= $this->escapeHtml($t->label()) ?></option>
+            <?php endforeach; ?>
+        </select>
+       
+    </div>
+
+   
+    <div class="inputs">
+        
+        <button type="button" id="add-target-property" class="button o-icon-add">
+            <?= $this->translate('Ajouter') ?>
+        </button>
+    </div>
+</div>
+
+<!-- Liste dynamique -->
+<!--<ul id="property-list"></ul>-->
+<?php 
+	print($this->form()->openTag($form));
+?>
+<table id="t_constraints" class="tablesaw tablesaw-stack t_constraints">
+  <thead>
+		<tr ><th class="small"></th><th>Source template</th><th>Source property</th><th>Target template</th><th></th></tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table> 
+
+
+<!-- Champ caché qui stocke la liste complète -->
+<input type="hidden" name="selected_properties" id="selected-properties" value="">
+	
+<?php 
+	print($this->formRow($form->get("submit")));
+	print($this->form()->closeTag());
+?>
