@@ -12,6 +12,7 @@ So the model has to be defined by mapping properties within a template (not a cl
 
 ## Requirements
 PHP >= 8.0 (developped with PHP 8.4)
+
 Omeka S >= ^4.0.0 (not tested on older versions)
 
 
@@ -24,10 +25,10 @@ Constraints are defined in a single **referential_integrity** table
 4. It counts in the **value** table the objects corresponding to the
    - source propery
    - source template
-   - the value_resource_id column value matching the id of the submitted object
-5. If one or more records are found, it raises an exception written to the log. The error message displays :
-   - the title of the objct
-   - the number of corresponding objet per source template
+   - the value_resource_id column value matching the id of the  object submitted for deletion
+5. If one or more records are found, it raises an exception written to the log. The error message also displays :
+   - the title of the object.
+   - the number of corresponding objet per source template.
   
 ## Caveats
 The module works for batch delete but doesn't show the exception warning when deletion is prevented. It deletes the object without linking, but keeps those that are associated to child records.
