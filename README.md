@@ -15,6 +15,8 @@ PHP >= 8.0 (developped with PHP 8.4)
 
 Omeka S >= ^4.0.0 (not tested on older versions)
 
+Log module
+
 
 ## Principle
 
