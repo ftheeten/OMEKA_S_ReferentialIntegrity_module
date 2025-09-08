@@ -4,7 +4,7 @@ This repository contains the code of a module for Omeka S (version 4.x.x) enabli
 Its aim is to prevent deletion of objects (items) that are the target (or parent) of a relationship from others object (child objects or "linked resources").
 
 A protected relationship is defined by : 
-1. the template definign the structure of the source item ("foreign key side") 
+1. the template defining the structure of the source item ("foreign key side") 
 2. the property having  relations to the child objects within this source template ("foreign key side") 
 3. the target template associated to the other end of the relatonship ("primary key side")
 
